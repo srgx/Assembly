@@ -1,0 +1,225 @@
+
+------------------------------------------------------------
+Chapter 2
+------------------------------------------------------------
+
+1. Architecture = CPU + Primary Storage + Secondary Storage + IO + Interconnection
+2. Bus/Interconnection connects memory to CPU.
+3. After turning off computer, program is stored in Secondary Storage.
+4. For program to be executed, it must be in main memory (RAM).
+5. Cache is located closer to processor, making it faster than RAM.
+6. In C++, int value uses 4 bytes.
+7. 1 byte is stored at one address.
+8. In value 0x004C4B40 the least and most significant bytes are:
+     LSB: 0x40
+     MSB: 0x00
+9. Little-endian memory values ​​0x004C4B40:
+     (high) 0x00 -> 0x4C -> 0x4B -> 0x40 (low)
+10. Register layout(rax): rax -> eax -> ax -> ah -> al
+11. Number of bits in registers:
+      al - 8
+      rcx - 64
+      bx - 16
+      edx - 32
+      r11 - 64
+      r8b - 8
+      sil - 8
+      r14w - 16
+12. The rip register (instruction pointer register) indicates next instruction to be executed.
+13. The rsp (stack pointer register) register points to top of stack.
+14. After all operations have been performed, rax register contains value 0x00000000000000000.
+15. If rax register value is set to 0x123456789ABCDEF:
+      al = 0xEF
+      ax = 0xCDEF
+      eax = 0x89ABCDEF
+      rax = 0x0123456789ABCDEF
+
+------------------------------------------------------------
+Chapter 3
+------------------------------------------------------------
+
+1. Data type ranges:
+     signed byte - -128 - +127
+     unsigned byte - 0 - +255
+     signed word - -32768 - +32767
+     unsigned word - 0 - +65535
+     signed double-word - -2147483648 - +2147483647
+     unsigned double-word - 0 - +4294967295
+2. Decimal binary number values:
+     0b0000101 - 5
+     0b0001001 - 9
+     0b0001101 - 13
+     0b0010101 - 21
+3. Hexadecimal values (tc) of decimal numbers (byte):
+     -3 - 0xFD
+     +11 - 0x0B
+     -9 - 0xF7
+     -21 - 0xEB
+4. Hexadecimal values ​​(tc) of decimal numbers (word):
+     -17 - 0xFFEF
+     +17 - 0x0011
+     -31 - 0xFFE1
+     -138 - 0xFF76
+5. Hexadecimal values ​​(tc) of decimal numbers (double-word):
+     -11 - 0xFFFFFFF5
+     -27 - 0xFFFFFFE5
+     +7 - 0x00000007
+     -261 - 0xFFFFFEFB
+6. Decimal values ​​(tc) of hexadecimal numbers (double-word):
+     0xFFFFFFFB - -5
+     0xFFFFFFEA - -22
+     0xFFFFFFF3 - -13
+     0xFFFFFFF8 - -8
+7. Decimal value of 0.5 is represented exactly in binary as 0.1.
+8. 32-bit floating-point (IEEE) decimal values:
+     0xC1440000 - -12.25
+     0x41440000 - +12.25
+     0xC0D00000 - -6.5
+     0xC0F00000 - -7.5
+9. Hexadecimal 32-bit floating point values ​​(IEEE):
+     +11.25 - 0x41340000
+     -17.125 - 0xC1890000
+     +21.875 - 0x41AF0000
+     -0.75 - 0xBF400000
+10. Character values ​​(ASCII):
+      "A" - 0x41
+      "a" - 0x61
+      "0" - 0x30
+      "8" - 0x38
+      tab - 0x09
+11. String values ​​(ASCII):
+      "World" - 0x57 0x6F 0x72 0x6C 0x64
+      "123" - 0x31 0x32 0x33
+      "Yes!?" - 0x59 0x65 0x73 0x21 0x3F
+
+------------------------------------------------------------
+Chapter 4
+------------------------------------------------------------
+
+1. Name of assembler is yasm.
+2. Comments are marked with ';' symbol.
+3. Initialized data is declared in .data section.
+4. Uninitialized data is declared in .bss section.
+5. Content of program is placed in .text section.
+6. Declarations of initialized data:
+     byte - bNum db 10
+     word - wNum dw 10291
+     double-word - dwNum dd 2126010
+     quadword - qwNum dq 10000000000
+7. Declarations of uninitialized data:
+     byte array - bArr resb 100
+     word array - wArr resw 3000
+     double-word array - dwArr resd 200
+     quadword array - qArr resq 5000
+8. Declarations marking beginning of program:
+     global _start
+     _start:
+
+------------------------------------------------------------
+Chapter 5
+------------------------------------------------------------
+
+1. It's 1:1 relationship. Binary code can be easily translated into assembly language.
+2. During first pass, symbol table is created, macros are executed, and constant expressions are evaluated.
+3. In second pass, final code and object file are generated and, on request, a list file is created.
+4. Task of linker is to combine one or many files into one executable file.
+5. Loader reads header information, opens executable file, creates new process via
+   operating system and informs OS when loading is completed.
+6. Constant expression is for example 'ANUM + BNUM'.
+7. Assembler -> Object File -> Linker -> Executable File -> Loader -> RAM
+8. Shared object is linked during program execution.
+9. Symbol table contains names of symbols, variables, labels and their addresses.
+
+------------------------------------------------------------
+Chapter 6
+------------------------------------------------------------
+
+1. Debugger is started with 'ddd filename' command.
+2. When assembling and linking, use '-g' option.
+3. Command 'run' starts program from beginning.
+4. Command 'continue' resumes program to breakpoint.
+5. To display contents of registers, select Status->Registers option from menu.
+6. Second column is register value in hexadecimal and third in decimal.
+   Exception are rip and rsp registers, contents of which are always displayed in hexadecimal.
+7. To exit debugger, select File->Exit from menu or enter one of commands (q/quit/exit).
+8. Breakpoint can be set by entering 'break' command with an argument or by right-clicking
+   mouse and selecting appropriate option.
+9. To read debugger commands from file one can use 'source filename' command.
+10. Green arrow indicates next instruction to be executed.
+11. Displaying variables in debugger (decimal):
+      byte - 'x/db &bVar1'
+      word - 'x/dh &wVar1'
+      double-word - 'x/dw &dVar1'
+      quadword - 'x/dg &qVar1'
+      byte array - 'x/30db &bArr1'
+      word array - 'x/50dh &wArr1'
+      double-word array - 'x/75dw &dArr1'
+12. Displaying variables in debugger (hexadecimal):
+      byte - 'x/xb &bVar1'
+      word - 'x/xh &wVar1'
+      double-word - 'x/xw &dVar1'
+      quadword - 'x/xg &qVar1'
+      byte array - 'x/30xb &bArr1'
+      word array - 'x/50xh &wArr1'
+      double-word array - 'x/75xw &dArr1'
+13. Displaying top of stack: 'x/ug $rsp'
+14. Displaying 5 items from stack: 'x/5ug $rsp'
+
+------------------------------------------------------------
+Chapter 7
+------------------------------------------------------------
+
+1. Illegal instructions:
+   3 - Value is too large: 'mov al, 354'
+   5 - Incompatible register sizes: 'mov rax, r11d'
+   6 - Number can't be destination: 'mov 54, ecx'
+   12, 13 - Both operands can't be memory locations:
+     'qword [qVar2], qword [qVar1]',
+     'qword [bVar2], qword [qVar1]'
+   15 - Invalid register: 'mov r16, 54'
+2. Instructions:
+     1 - Copy as unsigned value: 'mov rsi, byte [bVar1]'
+     2 - Copy as signed: 'rsi, byte [bVar1]'
+3. Byte conversion instructions:
+     1 - Unsigned al -> ax: 'mov ah, 0'
+     2 - Signed al -> ax: 'cbw'
+4. Word conversion instructions:
+     1 - Unsigned ax -> eax: 'movz eax, ax'
+     2 - Signed ax -> eax: 'cwde'
+5. Conversion:
+     1 - Unsigned ax -> dx:ax: 'mov dx, 0'
+     2 - Signed ax -> dx:ax: 'cwd'
+6. Instruction 'movsx' copies operand while 'cwd' only converts it.
+7. Explicit specification:
+     1 - Size of value (1) is unspecified
+     2 - Known register size
+8. Register values:
+     rax - 0x 0000 0000 0000 0009
+     rbx - 0x 0000 0000 0000 000B
+9. Values of registers:
+     rax - 0x 0000 0000 0000 0007
+     rbx - 0x 0000 0000 0000 0002
+10. Values after subtraction:
+      rax - 0x 0000 0000 0000 0009
+      rbx - 0x FFFF FFFF FFFF FFF9
+11. Registers after multiplication:
+      rax - 0x 0000 0000 0000 000C
+      rdx - 0x 0000 0000 0000 0000
+12. Registers after division:
+      rax - 0x 0000 0000 0000 0001
+      rdx - 0x 0000 0000 0000 0002
+13. Division result:
+      rax - 0x 0000 0000 0000 0002
+      rdx - 0x 0000 0000 0000 0003
+14. Incorrect statements:
+      1 - Wrong destination: 'mov 42, eax'
+      2 - Operand type is unknown: 'div 3'
+      3 - Two memory locations: 'mov dword [num1], dword [num2]'
+      4 - Register 'ax' is too small for 64-bit address: 'mov dword [ax], 800'
+15. Whole dividend 'edx:eax' is not set.
+16. Signed division (idiv) should be used.
+17. Result will not be in 'eax' but 'dx:ax'.
+18. Signed multiplication allows 3 operands.
+
+------------------------------------------------------------
+
