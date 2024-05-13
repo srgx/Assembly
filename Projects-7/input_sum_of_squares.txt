@@ -1,0 +1,19 @@
+echo \n\n
+break last
+run
+set pagination off
+set logging file out.txt
+set logging overwrite
+set logging on
+set prompt
+echo ----------------------\n
+echo Decimal\n
+echo ----------------------\n
+x/ug &sumOfSquares
+echo ----------------------\n
+echo Hexadecimal\n
+echo ----------------------\n
+x/xg &sumOfSquares
+echo \n
+set logging enabled off
+quit

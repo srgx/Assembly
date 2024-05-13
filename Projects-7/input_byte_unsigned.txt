@@ -1,0 +1,43 @@
+echo \n\n
+break last
+run
+set pagination off
+set logging file out.txt
+set logging overwrite
+set logging on
+set prompt
+echo ----------------------\n
+echo Decimal\n
+echo ----------------------\n
+x/ub &bAns1
+x/ub &bAns2
+x/ub &bAns3
+x/ub &bAns6
+x/ub &bAns7
+x/ub &bAns8
+x/uh &wAns11
+x/uh &wAns12
+x/uh &wAns13
+x/ub &bAns16
+x/ub &bAns17
+x/ub &bAns18
+x/ub &bRem18
+echo ----------------------\n
+echo Hexadecimal\n
+echo ----------------------\n
+x/xb &bAns1
+x/xb &bAns2
+x/xb &bAns3
+x/xb &bAns6
+x/xb &bAns7
+x/xb &bAns8
+x/xh &wAns11
+x/xh &wAns12
+x/xh &wAns13
+x/xb &bAns16
+x/xb &bAns17
+x/xb &bAns18
+x/xb &bRem18
+echo \n
+set logging enabled off
+quit
